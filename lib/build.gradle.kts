@@ -9,6 +9,7 @@ plugins {
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
     `maven-publish`
+    id("org.sonarqube") version "5.1.0.4882"
 }
 
 repositories {
@@ -57,4 +58,12 @@ publishing {
             from(components["java"])
         }
     }
+}
+
+sonar {
+  properties {
+    property("sonar.projectKey", "gradle-lib-template")
+    property("sonar.organization", "hnd14")
+    property("sonar.host.url", "https://sonarcloud.io")
+  }
 }
